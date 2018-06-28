@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset="utf-8"/>
+        <meta content="initial-scale=1, width=device-width", shrink-to-fit=no name="viewport"/>
+
+
+        <!-- http://jquery.com/ -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+        <!-- documentation at http://getbootstrap.com/docs/4.0/, alternative themes at https://bootswatch.com/4-alpha/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+
+        <!-- App's own CSS -->
+        <link href="/static/styles.css" rel="stylesheet"/>
+
+        <!-- https://developers.google.com/maps/documentation/javascript/ -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgatq4KgsR2NHXXIG8YxiwncrsEz_xis8&v=3.exp"></script>
+
+        <!-- https://github.com/corejavascript/typeahead.js/blob/master/doc/jquery_typeahead.md -->
+        <script src="https://cdn.rawgit.com/corejavascript/typeahead.js/master/dist/typeahead.jquery.js"></script>
+
+        <!-- http://handlebarsjs.com/ -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+        <!-- app's own JavaScript -->
+        <script src="/static/scripts.js"></script>
+
+        <title>Travelogue</title>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark border">
+          <span class = "sidenavTitle" onclick="openNav()">&#9776;</span>
+          <a class="navbar-brand" href="/">Travelogue</a>
+            <ul class = "navbar-nav">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" maxlength="50" id="username" type="text" placeholder="Username">
+              <input class="form-control mr-sm-2" maxlength="32" id="password" type="password" placeholder="Password">
+              <input class="form-control mr-sm-2" maxlength="32" id="verify" type="hidden" placeholder="Re-enter Password" onfocus="viewPasswordRequirements()">
+              <button class="btn btn-outline-success my-2 my-sm-0" id= "loginButton" type="button" onclick="myFunction(this.id)">Login</button>
+              <button class="btn btn-outline-success my-2 my-sm-0" id= "registerButton" type="button" onclick="myFunction(this.id)">Register</button>
+              <button class="btn btn-outline-success my-2 my-sm-0 hidebutton" id= "logoutButton" type="button" onclick="myFunction(this.id)">Logout</button>
+              <span id="stateStat" class="navbar-text statNav">&nbsp;&nbsp;&nbsp;&nbsp;States:&nbsp;</span>
+              <span id="cityStat" class="navbar-text statNav">&nbsp;&nbsp;&nbsp;&nbsp;Cities:&nbsp;</span>
+              <span id="parkStat" class="navbar-text statNav">&nbsp;&nbsp;&nbsp;&nbsp;Parks:&nbsp;</span>
+
+              <!-- Modal -->
+              <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Message</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">Something went wrong..</div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+          </ul>
+        </nav>
+
+        <div id="mapsSideNav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class = "dropdown-divider"></div>
+            <a href="#" class="dropdown-item"><input type="checkbox" id="nationalPark" class = "chb" checked="checked"/>National Parks</a>
+            <a href="#" class="dropdown-item"><input type="checkbox" id="city" class = "chb" checked="checked"/>Cities</a>
+            <div class = "dropdown-divider"></div>
+        </div>
+
+        <!-- Fill viewport -->
+        <div class="container-fluid">
+            <!-- https://developers.google.com/maps/documentation/javascript/tutorial -->
+            <div id="map-canvas"></div>
+
+        </div>
+
+
+
+    </body>
+</html>
